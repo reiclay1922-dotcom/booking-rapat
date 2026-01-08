@@ -7,14 +7,30 @@ class Verifikator extends MY_Controller {
     $this->require_role('verifikator');
     $this->load->model('Booking_model');
 
-    $data['rows']   = $this->Booking_model->pending_list();
-    $data['active'] = $this->Booking_model->active_now();
     $data['booked'] = $this->Booking_model->booked_schedule();
-    $data['server_now'] = date('c'); // untuk offset waktu di JS
-    $data['server_now_ts'] = time(); // unix timestamp (lebih akurat & aman)
 
     $data['page_title'] = 'Dashboard Verifikator';
     $this->render('verifikator/dashboard', $data);
+    }
+
+    public function pending() {
+    $this->require_role('verifikator');
+    $this->load->model('Booking_model');
+
+    $data['rows'] = $this->Booking_model->pending_list();
+    $data['page_title'] = 'Booking Pending';
+    $this->render('verifikator/pending', $data);
+    }
+
+    public function live_page() {
+    $this->require_role('verifikator');
+    $this->load->model('Booking_model');
+
+    $data['active'] = $this->Booking_model->active_now();
+    $data['server_now'] = date('c'); // untuk offset waktu di JS
+    $data['server_now_ts'] = time(); // unix timestamp (lebih akurat & aman)
+    $data['page_title'] = 'Ruang Sedang Dipakai';
+    $this->render('verifikator/live', $data);
     }
 
 
