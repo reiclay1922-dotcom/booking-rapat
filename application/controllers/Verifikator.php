@@ -9,6 +9,7 @@ class Verifikator extends MY_Controller {
 
     $data['rows']   = $this->Booking_model->pending_list();
     $data['active'] = $this->Booking_model->active_now();
+    $data['booked'] = $this->Booking_model->booked_schedule();
     $data['server_now'] = date('c'); // untuk offset waktu di JS
     $data['server_now_ts'] = time(); // unix timestamp (lebih akurat & aman)
 
