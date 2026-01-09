@@ -18,12 +18,14 @@
         <?php if ($u && $u['role'] === 'customer'): ?>
           <li class="nav-item">
             <a href="<?= site_url('customer/booking'); ?>" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i><p>Pendaftaran Booking</p>
+              <i class="nav-icon fas fa-edit"></i>
+              <p>Pendaftaran Booking</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="<?= site_url('customer/history'); ?>" class="nav-link">
-              <i class="nav-icon fas fa-history"></i><p>Riwayat Booking</p>
+              <i class="nav-icon fas fa-history"></i>
+              <p>Riwayat Booking</p>
             </a>
           </li>
         <?php endif; ?>
@@ -31,7 +33,20 @@
         <?php if ($u && $u['role'] === 'verifikator'): ?>
           <li class="nav-item">
             <a href="<?= site_url('verifikator'); ?>" class="nav-link">
-              <i class="nav-icon fas fa-check"></i><p>Dashboard Verifikator</p>
+              <i class="nav-icon fas fa-check"></i>
+              <p>Dashboard Verifikator</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('verifikator/live_page'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-clock"></i>
+              <p>Ruang Sedang Dipakai</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('verifikator/pending'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-hourglass-half"></i>
+              <p>Booking Pending</p>
             </a>
           </li>
         <?php endif; ?>
