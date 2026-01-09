@@ -34,6 +34,16 @@
               <i class="nav-icon fas fa-check"></i><p>Dashboard Verifikator</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="<?= site_url('verifikator/live_page'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-clock"></i><p>Ruang Sedang Dipakai</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= site_url('verifikator/pending'); ?>" class="nav-link">
+              <i class="nav-icon fas fa-hourglass-half"></i><p>Booking Pending</p>
+            </a>
+          </li>
         <?php endif; ?>
 
       </ul>
