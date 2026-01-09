@@ -69,3 +69,24 @@
     </form>
   </div>
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('formReject');
+    const txtJudul = document.getElementById('txtJudul');
+
+    document.querySelectorAll('.btn-reject').forEach(button => {
+      button.addEventListener('click', function() {
+        const id = this.dataset.id;
+        const judul = this.dataset.judul || '';
+
+        if (form) {
+          form.action = '<?= site_url('verifikator/reject/'); ?>' + id;
+        }
+        if (txtJudul) {
+          txtJudul.textContent = judul ? 'Judul: ' + judul : '';
+        }
+      });
+    });
+  });
+</script>
