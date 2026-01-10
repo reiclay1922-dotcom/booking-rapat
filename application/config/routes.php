@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 $route['default_controller'] = 'auth/login';
 $route['login'] = 'auth/login';
@@ -10,8 +10,10 @@ $route['customer/submit']  = 'customer/submit';
 $route['customer/history'] = 'customer/history';
 
 $route['verifikator'] = 'verifikator/index';
-$route['verifikator/approve/(:num)'] = 'verifikator/approve/$1';
-$route['verifikator/reject/(:num)']  = 'verifikator/reject/$1';
+// $route['verifikator/approve/(:num)'] = 'verifikator/approve/$1';
+// $route['verifikator/reject/(:num)']  = 'verifikator/reject/$1';
+$route['verifikator/api/approve/(:num)'] = 'verifikator/api_approve/$1';
+$route['verifikator/api/reject/(:num)']  = 'verifikator/api_reject/$1';
 $route['verifikator/live'] = 'verifikator/live';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

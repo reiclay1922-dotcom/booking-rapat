@@ -7,6 +7,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @property CI_Session $session
  * @property CI_Output $output
  * @property CI_Loader $load
+ * @property CI_Security $security
  */
 class Verifikator extends MY_Controller
 {
@@ -21,7 +22,6 @@ class Verifikator extends MY_Controller
     public function index()
     {
         $this->require_role('verifikator');
-        // ...existing code...
         $data['rows']   = $this->Booking_model->pending_list();
         $data['active'] = $this->Booking_model->active_now();
         $data['booked'] = $this->Booking_model->booked_schedule();
@@ -31,6 +31,7 @@ class Verifikator extends MY_Controller
         $data['page_title'] = 'Dashboard Verifikator';
         $this->render('verifikator/dashboard', $data);
     }
+
 
     public function pending()
     {
@@ -57,7 +58,6 @@ class Verifikator extends MY_Controller
     public function approve($id)
     {
         $this->require_role('verifikator');
-        // ...existing code...
         $this->Booking_model->update_status($id, 'APPROVED', $this->user()['id']);
         $this->session->set_flashdata('success', 'Booking berhasil di-approve.');
         redirect('verifikator');
@@ -73,7 +73,6 @@ class Verifikator extends MY_Controller
             redirect('verifikator');
         }
 
-        // ...existing code...
         $this->Booking_model->update_status($id, 'REJECTED', $this->user()['id'], $catatan);
         $this->session->set_flashdata('success', 'Booking berhasil di-reject.');
         redirect('verifikator');

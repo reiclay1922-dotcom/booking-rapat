@@ -1,3 +1,11 @@
+<?php
+$csrf_name = $this->security->get_csrf_token_name();
+$csrf_hash = $this->security->get_csrf_hash();
+?>
+
+<!-- tempat notifikasi -->
+<div id="flashArea"></div>
+
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Jadwal Booking</h3>

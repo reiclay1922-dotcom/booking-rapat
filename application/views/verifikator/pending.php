@@ -69,3 +69,37 @@
         </form>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+        // Handle tombol reject diklik
+        $('.btn-reject').on('click', function() {
+            var id = $(this).data('id');
+            var judul = $(this).data('judul');
+
+            // Set judul rapat di modal
+            $('#txtJudul').text('Apakah Anda yakin ingin menolak booking: ' + judul + '?');
+
+            // Set action form
+            $('#formReject').attr('action', '<?= site_url("verifikator/reject/"); ?>' + id);
+        });
+
+        // Handle submit form reject
+        $('#formReject').on('submit', function(e) {
+            e.preventDefault();
+
+            $.ajax({
+                url: $(this).attr('action'),
+                method: 'POST',
+                data: $(this).serialize(),
+                success: function(response) {
+                    $('#modalReject').modal('hide');
+                    location.reload();
+                },
+                error: function() {
+                    alert('Terjadi kesalahan');
+                }
+            });
+        });
+    });
+</script>
