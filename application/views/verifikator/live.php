@@ -1,7 +1,4 @@
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Ruang Sedang Dipakai (Realtime)</h3>
-    </div>
 
     <div class="card-body table-responsive">
         <table class="table table-bordered" id="tableActive" data-server-ts="<?= time(); ?>">

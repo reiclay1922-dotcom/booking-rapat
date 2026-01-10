@@ -68,8 +68,8 @@ class Booking_model extends CI_Model
     $this->db->order_by("FIELD(b.status, 'PENDING','APPROVED')", '', false);
 
     // urut jadwal
-    $this->db->order_by('b.tanggal', 'ASC');
     $this->db->order_by('b.jam_mulai', 'ASC');
+    $this->db->order_by('b.tanggal', 'ASC');
 
     // biar stabil kalau jam sama
     $this->db->order_by('b.id', 'ASC');
@@ -101,6 +101,26 @@ class Booking_model extends CI_Model
       'verified_at' => date('Y-m-d H:i:s')
     ]);
   }
+  public function rejected_list()
+  {
+    $this->db->select("
+      b.*,
+      u.nama as nama_user,
+      r.nama_ruang,
+      TIMESTAMPDIFF(
+        MINUTE,
+        CONCAT(b.tanggal,' ',b.jam_mulai),
+        CONCAT(b.tanggal,' ',b.jam_selesai)
+      ) AS durasi_menit
+    ");
+    $this->db->from('bookings b');
+    $this->db->join('users u', 'u.id=b.user_id');
+    $this->db->join('rooms r', 'r.id=b.room_id');
+    $this->db->where('b.status', 'REJECTED');
+    $this->db->order_by('b.verified_at', 'DESC');
+    return $this->db->get()->result();
+  }
+
   public function active_now()
   {
     $this->db->select("

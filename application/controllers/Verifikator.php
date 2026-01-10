@@ -25,6 +25,7 @@ class Verifikator extends MY_Controller
         $data['rows']   = $this->Booking_model->pending_list();
         $data['active'] = $this->Booking_model->active_now();
         $data['booked'] = $this->Booking_model->booked_schedule();
+        $data['rejected'] = $this->Booking_model->rejected_list();
         $data['server_now'] = date('c'); // untuk offset waktu di JS
         $data['server_now_ts'] = time(); // unix timestamp (lebih akurat & aman)
 
@@ -81,7 +82,6 @@ class Verifikator extends MY_Controller
     public function live()
     {
         $this->require_role('verifikator');
-        // ...existing code...
         $active = $this->Booking_model->active_now();
 
         $payload = [
